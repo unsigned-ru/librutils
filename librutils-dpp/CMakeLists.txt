@@ -33,24 +33,24 @@ target_sources(${PROJECT_NAME}
     PUBLIC FILE_SET HEADERS 
 	BASE_DIRS "include"
     FILES 
-	"include/utils.h"
-	"include/base_bot.h"
-	"include/slashcommand_handler.h"
-	"include/slashcommand_groups.h"
-	"include/slashcommands.h"
+	"include/librutils-dpp/utils.h"
+	"include/librutils-dpp/base_bot.h"
+	"include/librutils-dpp/slashcommand_handler.h"
+	"include/librutils-dpp/slashcommand_groups.h"
+	"include/librutils-dpp/slashcommands.h"
 
-	"include/preconditions/precondition.h"
-	"include/preconditions/all_of.h"
-	"include/preconditions/any_of.h"
-	"include/preconditions/has_channel.h"
-	"include/preconditions/has_permissions.h"
-	"include/preconditions/has_role.h"
+	"include/librutils-dpp/preconditions/precondition.h"
+	"include/librutils-dpp/preconditions/all_of.h"
+	"include/librutils-dpp/preconditions/any_of.h"
+	"include/librutils-dpp/preconditions/has_channel.h"
+	"include/librutils-dpp/preconditions/has_permissions.h"
+	"include/librutils-dpp/preconditions/has_role.h"
 )
 
 # Add project include dirs
 target_include_directories(${PROJECT_NAME} PRIVATE 
 	"src"
-	"include"
+	"include/librutils-dpp"
 	$<$<NOT:$<STREQUAL:${VCPKG_PATH}, OFF>>:${VCPKG_PATH}/installed/${ARCHITECTURE}-windows/include>
 )
 

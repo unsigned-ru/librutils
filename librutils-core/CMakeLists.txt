@@ -25,20 +25,20 @@ target_sources(${PROJECT_NAME}
     PUBLIC FILE_SET HEADERS 
 	BASE_DIRS "include"
     FILES 
-	"include/base64.h"
-	"include/bitmask_operators.h"
-	"include/callback_timer.h"
-	"include/delta_timer.h"
-	"include/service.h"
-	"include/service_locator.h"
-	"include/standard_colors.h"
-	"include/string_utils.h"
+	"include/librutils-core/base64.h"
+	"include/librutils-core/bitmask_operators.h"
+	"include/librutils-core/callback_timer.h"
+	"include/librutils-core/delta_timer.h"
+	"include/librutils-core/service.h"
+	"include/librutils-core/service_locator.h"
+	"include/librutils-core/standard_colors.h"
+	"include/librutils-core/string_utils.h"
 )
 
 # Add project include dirs
 target_include_directories(${PROJECT_NAME} PRIVATE 
 	"src"
-	"include"
+	"include/librutils-core"
 	$<$<NOT:$<STREQUAL:${VCPKG_PATH}, OFF>>:${VCPKG_PATH}/installed/${ARCHITECTURE}-windows/include>
 )
 
