@@ -38,7 +38,7 @@ target_sources(${PROJECT_NAME}
 # Add project include dirs
 target_include_directories(${PROJECT_NAME} PRIVATE 
 	"src"
-	"include/librutils-core"
+	"include/rutils-core"
 	$<$<NOT:$<STREQUAL:${VCPKG_PATH}, OFF>>:${VCPKG_PATH}/installed/${ARCHITECTURE}-windows/include>
 )
 
