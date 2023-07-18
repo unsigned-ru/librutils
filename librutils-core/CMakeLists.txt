@@ -103,7 +103,7 @@ if (WIN32)
 	# create the targets.cmake file and place it in the correct dir
 	install(EXPORT ${PROJECT_NAME}-targets
 		FILE ${PROJECT_NAME}-targets.cmake
-		NAMESPACE libloggeru::
+		NAMESPACE ${PROJECT_NAME}::
 		DESTINATION "share/${PROJECT_NAME}")
 
 	install(FILES "cmake/${PROJECT_NAME}-config.cmake" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake"

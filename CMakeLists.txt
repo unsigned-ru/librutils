@@ -8,6 +8,10 @@ project(${PROJECT_NAME} LANGUAGES CXX VERSION 1.0.0)
 #stop cmake from prepending
 set(CMAKE_SHARED_LIBRARY_PREFIX "") 
 
+# Set the general CXX standard.
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+
 #build type option
 set(LIBRARY_BUILD_TYPE "SHARED" CACHE STRING "STATIC/SHARED")
 

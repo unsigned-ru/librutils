@@ -22,6 +22,29 @@
           "type": "STRING"
         }
       ]
+    },
+    {
+      "name": "x64-Release",
+      "generator": "Ninja",
+      "configurationType": "RelWithDebInfo",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "variables": [
+        {
+          "name": "RUTILS_BUILD_DPP",
+          "value": "True",
+          "type": "BOOL"
+        },
+        {
+          "name": "LIBRARY_BUILD_TYPE",
+          "value": "STATIC",
+          "type": "STRING"
+        }
+      ]
     }
   ]
 }
