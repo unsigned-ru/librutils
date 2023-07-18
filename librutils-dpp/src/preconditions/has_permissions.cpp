@@ -1,5 +1,5 @@
-#include "has_permissions.h"
-#include "../utils.h"
+#include "preconditions/has_permissions.h"
+#include "utils.h"
 
 rutils::has_permissions_t::has_permissions_t(dpp::permissions permissions)
 	: permissions(permissions)

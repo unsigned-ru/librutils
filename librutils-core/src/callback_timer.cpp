@@ -14,7 +14,9 @@ rutils::callback_timer_t::callback_timer_t(std::function<void(void)>&& func, con
 	, is_elapsed{ false }
 {
 	if (auto_start)
+	{
 		start();
+	}
 }
 
 rutils::callback_timer_t::~callback_timer_t()
@@ -71,21 +73,21 @@ bool rutils::callback_timer_t::is_repeating() const
 	return should_repeat;
 }
 
-rutils::callback_timer_t* rutils::callback_timer_t::set_function(std::function<void(void)>&& func)
+rutils::callback_timer_t* rutils::callback_timer_t::set_function(std::function<void(void)>&& func_to_set)
 {
-	function = func;
+	function = func_to_set;
 	return this;
 }
 
-rutils::callback_timer_t* rutils::callback_timer_t::set_interval(const uint32_t interval)
+rutils::callback_timer_t* rutils::callback_timer_t::set_interval(const uint32_t interval_to_set)
 {
-	set_interval(std::chrono::milliseconds(interval));
+	set_interval(std::chrono::milliseconds(interval_to_set));
 	return this;
 }
 
-rutils::callback_timer_t* rutils::callback_timer_t::set_repeating(const bool should_repeat)
+rutils::callback_timer_t* rutils::callback_timer_t::set_repeating(const bool should_repeat_to_set)
 {
-	this->should_repeat = should_repeat;
+	should_repeat = should_repeat_to_set;
 	return this;
 }
 

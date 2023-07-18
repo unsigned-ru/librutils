@@ -57,25 +57,27 @@ void rutils::delta_timer_t::stop()
 	set_enabled(false);
 }
 
-void rutils::delta_timer_t::set_enabled(const bool enabled)
+void rutils::delta_timer_t::set_enabled(const bool enabled_to_set)
 {
-	is_enabled = enabled;
+	is_enabled = enabled_to_set;
 }
 
-void rutils::delta_timer_t::set_repeating(const bool repeat)
+void rutils::delta_timer_t::set_repeating(const bool repeat_to_set)
 {
-	this->repeat = repeat;
+	repeat = repeat_to_set;
 }
 
-void rutils::delta_timer_t::set_interval(const float interval)
+void rutils::delta_timer_t::set_interval(const float interval_to_set)
 {
-	this->interval = interval;
+	interval = interval_to_set;
 }
 
-void rutils::delta_timer_t::reset(const bool stop)
+void rutils::delta_timer_t::reset(const bool should_stop)
 {
 	elapsed_time = 0.f;
 	
-	if (stop)
-		this->stop();
+	if (should_stop)
+	{
+		stop();
+	}
 }

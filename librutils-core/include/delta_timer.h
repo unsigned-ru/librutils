@@ -18,10 +18,10 @@ namespace rutils
 		void start();
 		void stop();
 
-		void set_enabled(const bool enabled);
-		void set_repeating(const bool repeat);
-		void set_interval(const float interval);
-		void reset(const bool stop = false);
+		void set_enabled(const bool enabled_to_set);
+		void set_repeating(const bool repeat_to_set);
+		void set_interval(const float interval_to_set);
+		void reset(const bool should_stop = false);
 
 	private:
 		bool is_enabled;

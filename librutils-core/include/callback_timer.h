@@ -28,9 +28,9 @@ namespace rutils
 		bool is_repeating() const;
 
 
-		callback_timer_t* set_function(std::function<void(void)>&& func);
-		callback_timer_t* set_interval(const uint32_t interval);
-		callback_timer_t* set_repeating(const bool should_repeat);
+		callback_timer_t* set_function(std::function<void(void)>&& func_to_set);
+		callback_timer_t* set_interval(const uint32_t interval_to_set);
+		callback_timer_t* set_repeating(const bool should_repeat_to_set);
 
 		template <class chrono_duration_t>
 		chrono_duration_t get_interval() const

@@ -1,4 +1,4 @@
-#include "all_of.h"
+#include "preconditions/all_of.h"
 
 rutils::all_of_t::all_of_t(std::vector<precondition_t*>&& preconditions)
 {

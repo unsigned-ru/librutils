@@ -18,8 +18,8 @@ namespace rutils
 		void register_commands();
 
 	private:
-		friend slashcommand_group_t& slashcommand_group_t::add_sub_command(const std::string& name, const std::string& description, dpp::parameter_registration_t&& parameters, std::unique_ptr<precondition_t>&& precondition, command_function_t function);
-		friend slashcommand_sub_group_t& slashcommand_sub_group_t::add_sub_command(const std::string& name, const std::string& description, dpp::parameter_registration_t&& parameters, std::unique_ptr<precondition_t>&& precondition, command_function_t function);
+		friend slashcommand_group_t& slashcommand_group_t::add_sub_command(const std::string& name, const std::string& description, dpp::parameter_registration_t&& parameters, std::unique_ptr<precondition_t>&& precond, command_function_t function);
+		friend slashcommand_sub_group_t& slashcommand_sub_group_t::add_sub_command(const std::string& name, const std::string& description, dpp::parameter_registration_t&& parameters, std::unique_ptr<precondition_t>&& precond, command_function_t function);
 		static void add_parameter_options(std::vector<dpp::command_option>& options, const dpp::parameter_registration_t& parameters);
 
 		void on_slashcommand(const dpp::slashcommand_t& event);

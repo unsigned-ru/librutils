@@ -1,4 +1,4 @@
-#include "has_channel.h"
+#include "preconditions/has_channel.h"
 
 rutils::has_channel_t::has_channel_t(dpp::snowflake channel_id)
 	: channel_id(std::move(channel_id))
