@@ -33,18 +33,18 @@ target_sources(${PROJECT_NAME}
     PUBLIC FILE_SET HEADERS 
 	BASE_DIRS "include"
     FILES 
-	"include/librutils-dpp/utils.h"
-	"include/librutils-dpp/base_bot.h"
-	"include/librutils-dpp/slashcommand_handler.h"
-	"include/librutils-dpp/slashcommand_groups.h"
-	"include/librutils-dpp/slashcommands.h"
+	"include/rutils-dpp/utils.h"
+	"include/rutils-dpp/base_bot.h"
+	"include/rutils-dpp/slashcommand_handler.h"
+	"include/rutils-dpp/slashcommand_groups.h"
+	"include/rutils-dpp/slashcommands.h"
 
-	"include/librutils-dpp/preconditions/precondition.h"
-	"include/librutils-dpp/preconditions/all_of.h"
-	"include/librutils-dpp/preconditions/any_of.h"
-	"include/librutils-dpp/preconditions/has_channel.h"
-	"include/librutils-dpp/preconditions/has_permissions.h"
-	"include/librutils-dpp/preconditions/has_role.h"
+	"include/rutils-dpp/preconditions/precondition.h"
+	"include/rutils-dpp/preconditions/all_of.h"
+	"include/rutils-dpp/preconditions/any_of.h"
+	"include/rutils-dpp/preconditions/has_channel.h"
+	"include/rutils-dpp/preconditions/has_permissions.h"
+	"include/rutils-dpp/preconditions/has_role.h"
 )
 
 # Add project include dirs

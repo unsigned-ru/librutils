@@ -25,14 +25,14 @@ target_sources(${PROJECT_NAME}
     PUBLIC FILE_SET HEADERS 
 	BASE_DIRS "include"
     FILES 
-	"include/librutils-core/base64.h"
-	"include/librutils-core/bitmask_operators.h"
-	"include/librutils-core/callback_timer.h"
-	"include/librutils-core/delta_timer.h"
-	"include/librutils-core/service.h"
-	"include/librutils-core/service_locator.h"
-	"include/librutils-core/standard_colors.h"
-	"include/librutils-core/string_utils.h"
+	"include/rutils-core/base64.h"
+	"include/rutils-core/bitmask_operators.h"
+	"include/rutils-core/callback_timer.h"
+	"include/rutils-core/delta_timer.h"
+	"include/rutils-core/service.h"
+	"include/rutils-core/service_locator.h"
+	"include/rutils-core/standard_colors.h"
+	"include/rutils-core/string_utils.h"
 )
 
 # Add project include dirs
