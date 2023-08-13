@@ -1,17 +1,12 @@
 #pragma once
 #include <dpp/dpp.h>
 
+#include "slashcommand_handler.h"
+
 #define LAMBDA_SLASH_COMMAND_FUNCTION(command_function)\
-[this](const std::string& command, const dpp::parameter_list_t& parameters, dpp::command_source source)\
+[this](const dpp::parameter_list_t& parameters, const dpp::slashcommand_t& event)\
 {\
-	return command_utility_execute\
-	(\
-		command, parameters, source,\
-		[this](const std::string& cmd, const dpp::parameter_list_t& params, dpp::command_source& src, bool& has_replied) \
-		{\
-			return command_function(cmd, params, src, has_replied);\
-		}\
-	); \
+	return command_function(parameters, event);\
 }
 
 namespace rutils::discord
@@ -32,16 +27,8 @@ namespace rutils::discord
 	protected:
 		virtual void run_impl(bool return_after_init);
 
-		void command_utility_execute
-		(
-			const std::string& command, const dpp::parameter_list_t& params, dpp::command_source& source,
-			const std::function<void(const std::string&, const dpp::parameter_list_t&, dpp::command_source&, bool&)>& command_logic
-		);
-
-		void command_utility_think(const dpp::command_source& source, bool& has_replied);
-
 		dpp::cluster bot;
-		dpp::commandhandler command_handler;
+		slashcommand_handler_t command_handler;
 
 
 		virtual void on_ready(const dpp::ready_t& e);

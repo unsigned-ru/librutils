@@ -24,12 +24,14 @@ target_sources(${PROJECT_NAME}
 	"src/slashcommand_handler.cpp"
 	"src/slashcommand_groups.cpp"
 
-	"src/preconditions/precondition.cpp"
+	"src/preconditions/base_precondition.cpp"
 	"src/preconditions/all_of.cpp"
 	"src/preconditions/any_of.cpp"
 	"src/preconditions/has_channel.cpp"
 	"src/preconditions/has_permissions.cpp"
 	"src/preconditions/has_role.cpp"
+	"src/preconditions/has_uid.cpp"
+	"src/preconditions/has_guild.cpp"
     PUBLIC FILE_SET HEADERS 
 	BASE_DIRS "include"
     FILES 
@@ -39,12 +41,15 @@ target_sources(${PROJECT_NAME}
 	"include/rutils-dpp/slashcommand_groups.h"
 	"include/rutils-dpp/slashcommands.h"
 
-	"include/rutils-dpp/preconditions/precondition.h"
+	"include/rutils-dpp/preconditions/base_precondition.h"
 	"include/rutils-dpp/preconditions/all_of.h"
 	"include/rutils-dpp/preconditions/any_of.h"
 	"include/rutils-dpp/preconditions/has_channel.h"
 	"include/rutils-dpp/preconditions/has_permissions.h"
 	"include/rutils-dpp/preconditions/has_role.h"
+	"include/rutils-dpp/preconditions/has_uid.h"
+	"include/rutils-dpp/preconditions/preconditions.h"
+	"include/rutils-dpp/preconditions/has_guild.h"
 )
 
 # Add project include dirs

@@ -9,7 +9,7 @@ rutils::slashcommand_handler_t::slashcommand_handler_t(dpp::cluster& bot)
 	bot.on_slashcommand([this](const dpp::slashcommand_t& slashcommand) { this->on_slashcommand(slashcommand); });
 }
 
-rutils::slashcommand_group_t& rutils::slashcommand_handler_t::add_command_group(const std::string& name, const std::string& description, std::unique_ptr<precondition_t>&& precondition, dpp::snowflake guild_id)
+rutils::slashcommand_group_t& rutils::slashcommand_handler_t::add_command_group(const std::string& name, const std::string& description, std::unique_ptr<base_precondition_t>&& precondition, dpp::snowflake guild_id)
 {
 	slashcommand_group_t command_group
 	(
@@ -19,7 +19,7 @@ rutils::slashcommand_group_t& rutils::slashcommand_handler_t::add_command_group(
 	return command_groups.emplace_back(std::move(command_group));
 }
 
-rutils::slashcommand_handler_t& rutils::slashcommand_handler_t::add_command(const std::string& name, const std::string& description, dpp::parameter_registration_t&& parameters, std::unique_ptr<precondition_t>&& precondition, command_function_t function, dpp::snowflake guild_id)
+rutils::slashcommand_handler_t& rutils::slashcommand_handler_t::add_command(const std::string& name, const std::string& description, dpp::parameter_registration_t&& parameters, std::unique_ptr<base_precondition_t>&& precondition, command_function_t function, dpp::snowflake guild_id)
 {
 	//setup slashcommand
 	slashcommand_t slashcommand(std::move(precondition), dpp::slashcommand(name, description, bot.me.id), guild_id, std::move(function));
@@ -105,14 +105,14 @@ void rutils::slashcommand_handler_t::on_slashcommand(const dpp::slashcommand_t& 
 {
 	std::vector<dpp::command_data_option> p_command_data;
 	command_function_t* p_command_function = nullptr;
-	std::vector<precondition_t*> preconditions{};
+	std::vector<base_precondition_t*> preconditions{};
 
 	resolve_slashcommand(&p_command_data, &p_command_function, preconditions, event);
 
 	if(p_command_function)
 	{
 		//run preconditions
-		for(precondition_t* p_precondition : preconditions)
+		for(base_precondition_t* p_precondition : preconditions)
 		{
 			if (p_precondition && p_precondition->evaluate(bot, event) == false)
 			{
@@ -134,7 +134,7 @@ void rutils::slashcommand_handler_t::on_slashcommand(const dpp::slashcommand_t& 
 	}
 }
 
-void rutils::slashcommand_handler_t::resolve_slashcommand(std::vector<dpp::command_data_option>* p_command_data, command_function_t** p_command_function, std::vector<precondition_t*>& preconditions, const dpp::slashcommand_t& event)
+void rutils::slashcommand_handler_t::resolve_slashcommand(std::vector<dpp::command_data_option>* p_command_data, command_function_t** p_command_function, std::vector<base_precondition_t*>& preconditions, const dpp::slashcommand_t& event)
 {
 	dpp::interaction interaction = event.command;
 	dpp::command_interaction cmd_interaction = interaction.get_command_interaction();
@@ -286,7 +286,8 @@ dpp::command_parameter rutils::slashcommand_handler_t::resolve_slashcommand_para
 				return resolved_user;
 			}
 
-			LOG_CRITICAL_("Could find resolved user with uid '{}' in interaction resolved fields", uid);
+			LOG_CRITICAL_("Could find resolved user with uid '{}' in interaction resolved fields", static_cast<uint64_t>(uid));
+			return nullptr;
 		}
 		case dpp::co_channel:
 		{
@@ -296,7 +297,8 @@ dpp::command_parameter rutils::slashcommand_handler_t::resolve_slashcommand_para
 				return event.command.resolved.channels.at(cid);
 			}
 
-			LOG_CRITICAL_("Could find resolved channel with cid '{}' in interaction resolved fields", cid);
+			LOG_CRITICAL_("Could find resolved channel with cid '{}' in interaction resolved fields", static_cast<uint64_t>(cid));
+			return nullptr;
 		}
 		case dpp::co_role:
 		{
@@ -307,8 +309,8 @@ dpp::command_parameter rutils::slashcommand_handler_t::resolve_slashcommand_para
 				return event.command.resolved.roles.at(rid);
 			}
 
-			LOG_CRITICAL_("Could find resolved role with rid '{}' in interaction resolved fields", rid);
-
+			LOG_CRITICAL_("Could find resolved role with rid '{}' in interaction resolved fields", static_cast<uint64_t>(rid));
+			return nullptr;
 		}
 		default:
 		{
@@ -328,7 +330,7 @@ dpp::command_option_type rutils::slashcommand_handler_t::get_command_option_type
 	case dpp::pt_integer:
 		return dpp::co_integer;
 	default:
-		LOG_WARNING_("Unknown parameter option type, must be a deprecation or lack of maintenance of this function.");
+		LOG_WARNING("Unknown parameter option type, must be a deprecation or lack of maintenance of this function.");
 		[[fallthrough]];
 	case dpp::pt_string:
 		return dpp::co_string;

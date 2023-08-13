@@ -1,9 +1,9 @@
 #pragma once
-#include "precondition.h"
+#include "base_precondition.h"
 
 namespace rutils
 {
-	class has_role_t final : public precondition_t
+	class has_role_t final : public base_precondition_t
 	{
 	public:
 		explicit has_role_t(dpp::snowflake role_id);

@@ -15,14 +15,14 @@ namespace rutils
 
 	struct slashcommand_t final
 	{
-		slashcommand_t(std::unique_ptr<precondition_t>&& precondition, dpp::slashcommand&& command, const dpp::snowflake guild_id, command_function_t function = default_function)
+		slashcommand_t(std::unique_ptr<base_precondition_t>&& precondition, dpp::slashcommand&& command, const dpp::snowflake guild_id, command_function_t function = default_function)
 			: precondition(std::move(precondition))
 			  , command(command)
 			  , guild_id(guild_id)
 			  , function(std::move(function))
 		{}
 
-		std::unique_ptr<precondition_t> precondition;
+		std::unique_ptr<base_precondition_t> precondition;
 		dpp::slashcommand command;
 		dpp::snowflake guild_id;
 		command_function_t function;
@@ -31,13 +31,13 @@ namespace rutils
 
 	struct slashcommand_sub_command_t final
 	{
-		slashcommand_sub_command_t(std::unique_ptr<precondition_t>&& precondition, dpp::command_option& sub_command_option, command_function_t function = default_function)
+		slashcommand_sub_command_t(std::unique_ptr<base_precondition_t>&& precondition, dpp::command_option& sub_command_option, command_function_t function = default_function)
 			: precondition(std::move(precondition))
 			  , sub_command_option(sub_command_option)
 			  , function(std::move(function))
 		{}
 
-		std::unique_ptr<precondition_t> precondition;
+		std::unique_ptr<base_precondition_t> precondition;
 		dpp::command_option& sub_command_option;
 		command_function_t function;
 	};

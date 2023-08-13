@@ -4,15 +4,15 @@
 
 namespace rutils
 {
-	class all_of_t final : public base_precondition_t
+	class has_guild_t final : public base_precondition_t
 	{
 	public:
-		explicit all_of_t(std::vector<base_precondition_t*>&& preconditions);
+		explicit has_guild_t(dpp::snowflake guild_id);
 
 	protected:
 		bool run_evaluate(dpp::cluster& cluster, const dpp::slashcommand_t& event) override;
 
 	private:
-		std::vector<std::unique_ptr<base_precondition_t>> preconditions;
+		dpp::snowflake guild_id;
 	};
 }

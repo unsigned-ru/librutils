@@ -2,12 +2,12 @@
 #include "slashcommand_handler.h"
 
 
-rutils::slashcommand_subgroupable_i::slashcommand_subgroupable_i(std::unique_ptr<precondition_t>&& precondition)
+rutils::slashcommand_subgroupable_i::slashcommand_subgroupable_i(std::unique_ptr<base_precondition_t>&& precondition)
 	: precondition(std::move(precondition))
 {
 }
 
-rutils::slashcommand_group_t::slashcommand_group_t(std::unique_ptr<precondition_t>&& precond, dpp::slashcommand&& command, dpp::snowflake guild_id, command_function_t function)
+rutils::slashcommand_group_t::slashcommand_group_t(std::unique_ptr<base_precondition_t>&& precond, dpp::slashcommand&& command, dpp::snowflake guild_id, command_function_t function)
 	: slashcommand_subgroupable_i(std::move(precond))
 	, command(nullptr, std::move(command), guild_id, std::move(function))
 {
@@ -16,7 +16,7 @@ rutils::slashcommand_group_t::slashcommand_group_t(std::unique_ptr<precondition_
 rutils::slashcommand_group_t& rutils::slashcommand_group_t::add_sub_command
 (
 	const std::string& name, const std::string& description,
-	dpp::parameter_registration_t&& parameters, std::unique_ptr<precondition_t>&& precond,
+	dpp::parameter_registration_t&& parameters, std::unique_ptr<base_precondition_t>&& precond,
 	command_function_t function
 )
 {
@@ -32,7 +32,7 @@ rutils::slashcommand_group_t& rutils::slashcommand_group_t::add_sub_command
 
 rutils::slashcommand_sub_group_t& rutils::slashcommand_group_t::add_command_sub_group
 (
-	const std::string& name, const std::string& description, std::unique_ptr<precondition_t>&& precond
+	const std::string& name, const std::string& description, std::unique_ptr<base_precondition_t>&& precond
 )
 {
 	command.command.options.reserve(10);
@@ -41,7 +41,7 @@ rutils::slashcommand_sub_group_t& rutils::slashcommand_group_t::add_command_sub_
 	return command_sub_groups.emplace_back(std::move(precond), option);
 }
 
-rutils::slashcommand_sub_group_t::slashcommand_sub_group_t(std::unique_ptr<precondition_t>&& precond, dpp::command_option& command_group)
+rutils::slashcommand_sub_group_t::slashcommand_sub_group_t(std::unique_ptr<base_precondition_t>&& precond, dpp::command_option& command_group)
 	: slashcommand_subgroupable_i(std::move(precond))
 	, command_group(command_group)
 {}
@@ -52,7 +52,7 @@ rutils::slashcommand_sub_group_t::slashcommand_sub_group_t(std::unique_ptr<preco
 
 rutils::slashcommand_sub_group_t& rutils::slashcommand_sub_group_t::add_sub_command
 (
-	const std::string& name, const std::string& description, dpp::parameter_registration_t&& parameters, std::unique_ptr<precondition_t>&& precond, command_function_t function
+	const std::string& name, const std::string& description, dpp::parameter_registration_t&& parameters, std::unique_ptr<base_precondition_t>&& precond, command_function_t function
 )
 {
 	command_group.options.reserve(10);
@@ -67,7 +67,7 @@ rutils::slashcommand_sub_group_t& rutils::slashcommand_sub_group_t::add_sub_comm
 
 rutils::slashcommand_sub_group_t& rutils::slashcommand_sub_group_t::add_command_sub_group
 (
-	const std::string& name, const std::string& description, std::unique_ptr<precondition_t>&& precond
+	const std::string& name, const std::string& description, std::unique_ptr<base_precondition_t>&& precond
 )
 {
 	command_group.options.reserve(10);

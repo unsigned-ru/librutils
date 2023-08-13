@@ -1,10 +1,10 @@
 #pragma once
 
-#include "precondition.h"
+#include "base_precondition.h"
 
 namespace rutils
 {
-	class has_channel_t final : public precondition_t
+	class has_channel_t final : public base_precondition_t
 	{
 	public:
 		explicit has_channel_t(dpp::snowflake channel_id);

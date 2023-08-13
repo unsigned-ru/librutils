@@ -23,7 +23,7 @@ std::string rutils::suffix_fill(const std::string& src, const int desired_length
 std::string rutils::to_lower(const std::string& src)
 {
 	std::string ret{};
-	ret.reserve(src.length());
+	ret.resize(src.size());
 
 	std::transform(src.begin(), src.end(), ret.begin(),
 		[](char c) { return std::tolower(c); });
@@ -55,7 +55,9 @@ std::string rutils::load_file_data(const std::string& path)
 {
 	//check if the file exists
 	if (!std::filesystem::exists(path))
+	{
 		throw std::runtime_error("File not found.");
+	}
 
 	std::ifstream fin(path, std::ios::in | std::ios::binary);
 	std::ostringstream oss;

@@ -45,6 +45,53 @@
           "type": "STRING"
         }
       ]
+    },
+    {
+      "name": "Linux-GCC-Local-Debug",
+      "generator": "Unix Makefiles",
+      "configurationType": "Debug",
+      "cmakeExecutable": "cmake",
+      "remoteCopySourcesExclusionList": [ ".vs", ".git", "out" ],
+      "cmakeCommandArgs": "-DCMAKE_C_COMPILER=gcc-13 -DCMAKE_CXX_COMPILER=g++-13",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "linux_x64" ],
+      "remoteMachineName": "196175322;192.168.0.110 (username=ru, port=22, authentication=Password)",
+      "remoteCMakeListsRoot": "$HOME/${projectDirName}/src",
+      "remoteBuildRoot": "$HOME/${projectDirName}/out/build/${name}",
+      "remoteCopySources": true,
+      "rsyncCommandArgs": "-t --delete",
+      "remoteCopyBuildOutput": false,
+      "remoteCopySourcesMethod": "rsync",
+      "intelliSenseMode": "linux-gcc-x64",
+      "remoteCopyAdditionalIncludeDirectories": [],
+      "variables": [
+        {
+          "name": "RUTILS_BUILD_DPP",
+          "value": "True",
+          "type": "BOOL"
+        }
+      ]
+    },
+    {
+      "name": "Linux-GCC-Local-Release",
+      "generator": "Unix Makefiles",
+      "configurationType": "Release",
+      "cmakeExecutable": "cmake",
+      "remoteCopySourcesExclusionList": [ ".vs", ".git", "out" ],
+      "cmakeCommandArgs": "-DCMAKE_C_COMPILER=gcc-13 -DCMAKE_CXX_COMPILER=g++-13",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "linux_x64" ],
+      "intelliSenseMode": "linux-gcc-x64",
+      "remoteMachineName": "196175322;192.168.0.110 (username=ru, port=22, authentication=Password)",
+      "remoteCMakeListsRoot": "$HOME/${projectDirName}/src",
+      "remoteBuildRoot": "$HOME/${projectDirName}/out/build/${name}",
+      "remoteCopySources": true,
+      "rsyncCommandArgs": "-t --delete",
+      "remoteCopyBuildOutput": false,
+      "remoteCopySourcesMethod": "rsync",
+      "remoteCopyAdditionalIncludeDirectories": []
     }
   ]
 }

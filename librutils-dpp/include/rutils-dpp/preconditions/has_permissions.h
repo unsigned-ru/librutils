@@ -1,9 +1,9 @@
 #pragma once
-#include "precondition.h"
+#include "base_precondition.h"
 
 namespace rutils
 {
-	class has_permissions_t final : public precondition_t
+	class has_permissions_t final : public base_precondition_t
 	{
 	public:
 		explicit has_permissions_t(dpp::permissions permissions);

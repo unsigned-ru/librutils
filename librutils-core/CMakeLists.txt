@@ -22,6 +22,7 @@ target_sources(${PROJECT_NAME}
 	"src/callback_timer.cpp"
 	"src/delta_timer.cpp"
 	"src/string_utils.cpp"
+	"src/random.cpp"
     PUBLIC FILE_SET HEADERS 
 	BASE_DIRS "include"
     FILES 
@@ -33,6 +34,7 @@ target_sources(${PROJECT_NAME}
 	"include/rutils-core/service_locator.h"
 	"include/rutils-core/standard_colors.h"
 	"include/rutils-core/string_utils.h"
+	"include/rutils-core/random.h"
 )
 
 # Add project include dirs

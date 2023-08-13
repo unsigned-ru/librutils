@@ -3,11 +3,11 @@
 
 namespace rutils
 {
-	class precondition_t
+	class base_precondition_t
 	{
 	public:
-		precondition_t() = default;
-		virtual ~precondition_t() = default;
+		base_precondition_t() = default;
+		virtual ~base_precondition_t() = default;
 
 		bool evaluate(dpp::cluster& cluster, const dpp::slashcommand_t& event);
 
