@@ -3,19 +3,6 @@
 #include <string>
 #include <dpp/dpp.h>
 
-#define ENSURE_GUILD(command_handler, src) if ((src).guild_id.empty()) \
-			{\
-				(command_handler).reply(dpp::message().set_flags(dpp::m_ephemeral).set_content("This command can only be executed in a server."), src);\
-				return;\
-			}\
-
-
-#define ENSURE_CHANNEL(command_handler, src, ensured_channel_id) if ((src).channel_id != (ensured_channel_id)) \
-			{\
-				(command_handler).reply(dpp::message().set_flags(dpp::m_ephemeral).set_content("This command can only be executed in the channel <#" + std::to_string((ensured_channel_id)) + ">"), src);\
-				return;\
-			}\
-
 namespace rutils
 {
 	std::string get_user_display_name(const dpp::user& user);
